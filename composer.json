@@ -1,7 +1,7 @@
 {
     "name": "codeartlv/klementine-ui",
     "type": "library",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "A collection of UI components for Laravel applications.",
 	"license": "MIT",
     "autoload": {
