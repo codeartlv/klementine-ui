@@ -39,6 +39,62 @@ If the config file is not published, the prefix defaults to `ui`.
 
 ### 3. Frontend dependencies
 
+After `composer require`, install the package's npm dependencies:
+
+```bash
+php artisan klementine-ui:install
+```
+
+This runs `npm install` in the package directory (works for path repos and `vendor/codeartlv/klementine-ui`). Node.js must be available on the machine.
+
+### 4. Automate with Composer (optional)
+
+The install command does not run automatically when the package is required. To run it after every `composer install` or `composer update`, add hooks to your **application's** root `composer.json`:
+
+```json
+{
+	"scripts": {
+		"post-install-cmd": ["@php artisan klementine-ui:install --ansi"],
+		"post-update-cmd": ["@php artisan klementine-ui:install --ansi"]
+	}
+}
+```
+
+If you already have `post-install-cmd` or `post-update-cmd` entries, append the artisan line to those arrays instead of replacing them:
+
+```json
+{
+	"scripts": {
+		"post-update-cmd": [
+			"@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+			"@php artisan klementine-ui:install --ansi"
+		]
+	}
+}
+```
+
+You can also call it from a custom setup script:
+
+```json
+{
+	"scripts": {
+		"setup": [
+			"composer install",
+			"@php artisan klementine-ui:install --ansi",
+			"npm install --ignore-scripts",
+			"npm run build"
+		]
+	}
+}
+```
+
+| Hook               | Runs when                                                |
+| ------------------ | -------------------------------------------------------- |
+| `post-install-cmd` | `composer install`                                       |
+| `post-update-cmd`  | `composer update`, `composer require`, `composer remove` |
+
+### 5. Vite alias
+
 Add a path alias in `vite.config.mjs` so imports resolve to the package resources:
 
 ```js
@@ -53,7 +109,7 @@ export default defineConfig({
 });
 ```
 
-### 5. Application entry point
+### 6. Application entry point
 
 Create or update `resources/js/app.js`:
 
@@ -81,7 +137,7 @@ Add a CSRF meta tag for AJAX forms and overlays:
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ```
 
-### 6. Styles
+### 7. Styles
 
 Import Klementine styles in your app CSS (the preview app uses the parent `resources/css/app.css` which should import or mirror the package layer structure). The package stylesheet entry is:
 
@@ -91,7 +147,7 @@ Import Klementine styles in your app CSS (the preview app uses the parent `resou
 
 It layers Web Awesome, design tokens (`variables.css`), form styles, and per-component CSS.
 
-### 7. Web Awesome assets
+### 8. Web Awesome assets
 
 Web Awesome static assets must be available at `/build/webawesome` in production. Configure the base path in `KlementineUI.setupWebAwesome()` (handled automatically when using the package entry point).
 

@@ -5,12 +5,19 @@ namespace Codeart\Klementine;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
+use Codeart\Klementine\Console\InstallCommand;
 use Codeart\Klementine\Http\Controllers\TestController;
 
 class KlementineUiServiceProvider extends ServiceProvider
 {
 	public function boot(): void
 	{
+		if ($this->app->runningInConsole()) {
+			$this->commands([
+				InstallCommand::class,
+			]);
+		}
+
 		$this->publishes([
 			$this->getPackageConfigPath() . 'klementine.php' => config_path('klementine.php'),
 		], 'klementine-config');
