@@ -1,0 +1,1 @@
+<wa-avatar label="{{ $label }}" {{ $attributes->merge(['class' => '']) }} initials="{{ $initials }}" image="{{ $image }}" loading="{{ $loading }}"></wa-avatar>

@@ -1,0 +1,17 @@
+wa-callout {
+	display: flex;
+
+	wa-icon {
+		color: var(--wa-color-border-loud);
+	}
+
+	> div {
+		display: flex;
+		align-items: center;
+		gap: var(--ui-spacing-xs);
+	}
+
+	strong {
+		display: block;
+	}
+}

@@ -1,0 +1,26 @@
+@layer reset, vendor, theme, components, overrides;
+
+/* --- Reset layer --- */
+@import 'normalize.css' layer(reset);
+
+/* --- Vendor layer --- */
+@import '@awesome.me/webawesome/dist/styles/webawesome.css' layer(vendor);
+@import 'vanilla-calendar-pro/styles/index.css' layer(vendor);
+
+/* --- Theme layer --- */
+@import 'variables.css' layer(theme);
+
+/* --- Component layer --- */
+@import 'forms' layer(components);
+@import 'elements/input.css' layer(components);
+@import 'elements/button.css' layer(components);
+@import 'elements/callout.css' layer(components);
+@import 'elements/dialog.css' layer(components);
+@import 'elements/icon.css' layer(components);
+@import 'elements/overlays.css' layer(components);
+@import 'elements/spinner.css' layer(components);
+@import 'elements/password.css' layer(components);
+@import 'elements/uploader.css' layer(components);
+
+/* --- Override layer --- */
+@import 'vendor/vanilla-calendar-pro.css' layer(overrides);

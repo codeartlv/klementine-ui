@@ -1,0 +1,258 @@
+:root {
+	/* --- Default palette --- */
+	--ui-color-brand-05: #000f35;
+	--ui-color-brand-10: #001a4e;
+	--ui-color-brand-20: #002d77;
+	--ui-color-brand-30: #003f9c;
+	--ui-color-brand-40: #0053c0;
+	--ui-color-brand-50: #0071ec; /* Default primary */
+	--ui-color-brand-60: #3e96ff;
+	--ui-color-brand-70: #6eb3ff;
+	--ui-color-brand-80: #9fceff;
+	--ui-color-brand-90: #d1e8ff;
+	--ui-color-brand-95: #e8f3ff;
+
+	--ui-color-success-05: #031608;
+	--ui-color-success-10: #052310;
+	--ui-color-success-20: #0a3a1d;
+	--ui-color-success-30: #0a5027;
+	--ui-color-success-40: #036730;
+	--ui-color-success-50: #00883c;
+	--ui-color-success-60: #00ac49;
+	--ui-color-success-70: #5dc36f;
+	--ui-color-success-80: #93da98;
+	--ui-color-success-90: #c2f2c1;
+	--ui-color-success-95: #e3f9e3;
+
+	--ui-color-warning-05: #220c00;
+	--ui-color-warning-10: #331600;
+	--ui-color-warning-20: #532600;
+	--ui-color-warning-30: #6f3601;
+	--ui-color-warning-40: #8c4602;
+	--ui-color-warning-50: #b45f04;
+	--ui-color-warning-60: #da7e00;
+	--ui-color-warning-70: #ef9d00;
+	--ui-color-warning-80: #fac22b;
+	--ui-color-warning-90: #ffe495;
+	--ui-color-warning-95: #fef3cd;
+
+	--ui-color-danger-05: #2a040b;
+	--ui-color-danger-10: #3e0913;
+	--ui-color-danger-20: #631323;
+	--ui-color-danger-30: #8a132c;
+	--ui-color-danger-40: #b30532;
+	--ui-color-danger-50: #dc3146;
+	--ui-color-danger-60: #f3676c;
+	--ui-color-danger-70: #fd8f90;
+	--ui-color-danger-80: #ffb8b6;
+	--ui-color-danger-90: #ffdedc;
+	--ui-color-danger-95: #fff0ef;
+
+	--ui-color-gray-05: #101219;
+	--ui-color-gray-10: #1b1d26;
+	--ui-color-gray-20: #2f323f;
+	--ui-color-gray-30: #424554;
+	--ui-color-gray-40: #545868;
+	--ui-color-gray-50: #717584;
+	--ui-color-gray-60: #9194a2;
+	--ui-color-gray-70: #abaeb9;
+	--ui-color-gray-80: #c7c9d0;
+	--ui-color-gray-90: #e4e5e9;
+	--ui-color-gray-95: #f1f2f3;
+
+	--ui-color-danger: var(--ui-color-danger-50);
+	--ui-color-warning: var(--ui-color-warning-50);
+	--ui-color-success: var(--ui-color-success-50);
+
+	--ui-color-text-normal: var(--ui-color-gray-10);
+	--ui-color-text-on-loud: var(--ui-color-gray-95);
+	--ui-color-neutrall-fill-normal: var(--ui-color-gray-95);
+	--ui-color-text-quiet: var(--ui-color-gray-40);
+
+	--ui-color-neutral-on-quiet: var(--ui-color-gray-40);
+
+	--ui-track-color: var(--ui-color-neutrall-fill-normal);
+
+	/* --- Shadows --- */
+	--ui-shadow-s: var(--wa-shadow-s);
+	--ui-shadow-m: var(--wa-shadow-m);
+	--ui-shadow-l: var(--wa-shadow-l);
+
+	/* --- Line height palette --- */
+	--ui-line-height-thin: 1;
+	--ui-line-height-normal: 1.6;
+
+	/* --- Font weight palette --- */
+
+	--ui-font-weight-normal: 400;
+	--ui-font-weight-semibold: 500;
+	--ui-font-weight-bold: 700;
+
+	/* --- Font size palette --- */
+
+	--ui-font-size-xs: 0.8125rem;
+	--ui-font-size-s: 0.9375rem;
+	--ui-font-size-m: 1rem;
+	--ui-font-size-l: 1.125rem;
+	--ui-font-size-xl: 1.75rem;
+	--ui-font-size-2xl: 2.25rem;
+	--ui-font-size-3xl: 3rem;
+	--ui-font-size-4xl: 3.75rem;
+	--ui-font-size-5xl: 4rem;
+
+	/* --- Border radius --- */
+	--ui-border-radius-scale: 1;
+	--ui-border-radius-s: calc(var(--ui-border-radius-scale) * 0.1875rem);
+	--ui-border-radius-m: calc(var(--ui-border-radius-scale) * 0.375rem);
+	--ui-border-radius-l: calc(var(--ui-border-radius-scale) * 0.75rem);
+
+	/* --- Spacing scale --- */
+	--ui-spacing-scale: 1;
+	--ui-spacing-3xs: calc(var(--ui-spacing-scale) * 0.125rem);
+	--ui-spacing-2xs: calc(var(--ui-spacing-scale) * 0.25rem);
+	--ui-spacing-xs: calc(var(--ui-spacing-scale) * 0.5rem);
+	--ui-spacing-s: calc(var(--ui-spacing-scale) * 0.75rem);
+	--ui-spacing-m: calc(var(--ui-spacing-scale) * 1rem);
+	--ui-spacing-l: calc(var(--ui-spacing-scale) * 1.25rem);
+	--ui-spacing-xl: calc(var(--ui-spacing-scale) * 1.5rem);
+	--ui-spacing-2xl: calc(var(--ui-spacing-scale) * 2rem);
+	--ui-spacing-3xl: calc(var(--ui-spacing-scale) * 2.5rem);
+	--ui-spacing-4xl: calc(var(--ui-spacing-scale) * 3rem);
+	--ui-spacing-5xl: calc(var(--ui-spacing-scale) * 4rem);
+	--ui-spacing-6xl: calc(var(--ui-spacing-scale) * 5rem);
+
+	/* --- Component settings --- */
+	--ui-form-hint-color: var(--ui-color-gray-60);
+	--ui-form-hint-font-weight: var(--ui-font-weight-medium);
+	--ui-form-hint-line-height: var(--ui-line-height-medium);
+	--ui-form-hint-font-size: var(--ui-font-size-s);
+	--ui-form-hint-error-color: var(--ui-color-danger);
+
+	/* Overlay */
+	--ui-overlay-background-color: rgba(0, 0, 0, 0.5);
+
+	/* Datepicker */
+	--ui-datepicker-holiday-color: var(--ui-color-danger);
+
+	/* Input */
+	--ui-input-error-border-color: var(--ui-color-danger);
+
+	/* Label */
+	--ui-input-label-color: var(--ui-color-gray-10);
+	--ui-input-label-font-weight: var(--ui-font-weight-normal);
+	--ui-input-label-line-height: var(--ui-line-height-normal);
+	--ui-input-label-margin: var(--ui-spacing-xs);
+
+	/* Form group */
+	--ui-form-group-gap: var(--ui-spacing-s);
+
+	/* --- Color mapping --- */
+	--wa-color-blue-05: var(--ui-color-brand-05);
+	--wa-color-blue-10: var(--ui-color-brand-10);
+	--wa-color-blue-20: var(--ui-color-brand-20);
+	--wa-color-blue-30: var(--ui-color-brand-30);
+	--wa-color-blue-40: var(--ui-color-brand-40);
+	--wa-color-blue-50: var(--ui-color-brand-50);
+	--wa-color-blue-60: var(--ui-color-brand-60);
+	--wa-color-blue-70: var(--ui-color-brand-70);
+	--wa-color-blue-80: var(--ui-color-brand-80);
+	--wa-color-blue-90: var(--ui-color-brand-90);
+	--wa-color-blue-95: var(--ui-color-brand-95);
+
+	--wa-color-green-95: var(--ui-color-success-95);
+	--wa-color-green-90: var(--ui-color-success-90);
+	--wa-color-green-80: var(--ui-color-success-80);
+	--wa-color-green-70: var(--ui-color-success-70);
+	--wa-color-green-60: var(--ui-color-success-60);
+	--wa-color-green-50: var(--ui-color-success-50);
+	--wa-color-green-40: var(--ui-color-success-40);
+	--wa-color-green-30: var(--ui-color-success-30);
+	--wa-color-green-20: var(--ui-color-success-20);
+	--wa-color-green-10: var(--ui-color-success-10);
+	--wa-color-green-05: var(--ui-color-success-05);
+
+	--wa-color-yellow-95: var(--ui-color-warning-95);
+	--wa-color-yellow-90: var(--ui-color-warning-90);
+	--wa-color-yellow-80: var(--ui-color-warning-80);
+	--wa-color-yellow-70: var(--ui-color-warning-70);
+	--wa-color-yellow-60: var(--ui-color-warning-60);
+	--wa-color-yellow-50: var(--ui-color-warning-50);
+	--wa-color-yellow-40: var(--ui-color-warning-40);
+	--wa-color-yellow-30: var(--ui-color-warning-30);
+	--wa-color-yellow-20: var(--ui-color-warning-20);
+	--wa-color-yellow-10: var(--ui-color-warning-10);
+	--wa-color-yellow-05: var(--ui-color-warning-05);
+
+	--wa-color-red-95: var(--ui-color-danger-95);
+	--wa-color-red-90: var(--ui-color-danger-90);
+	--wa-color-red-80: var(--ui-color-danger-80);
+	--wa-color-red-70: var(--ui-color-danger-70);
+	--wa-color-red-60: var(--ui-color-danger-60);
+	--wa-color-red-50: var(--ui-color-danger-50);
+	--wa-color-red-40: var(--ui-color-danger-40);
+	--wa-color-red-30: var(--ui-color-danger-30);
+	--wa-color-red-20: var(--ui-color-danger-20);
+	--wa-color-red-10: var(--ui-color-danger-10);
+	--wa-color-red-05: var(--ui-color-danger-05);
+
+	--wa-color-gray-95: var(--ui-color-gray-95);
+	--wa-color-gray-90: var(--ui-color-gray-90);
+	--wa-color-gray-80: var(--ui-color-gray-80);
+	--wa-color-gray-70: var(--ui-color-gray-70);
+	--wa-color-gray-60: var(--ui-color-gray-60);
+	--wa-color-gray-50: var(--ui-color-gray-50);
+	--wa-color-gray-40: var(--ui-color-gray-40);
+	--wa-color-gray-30: var(--ui-color-gray-30);
+	--wa-color-gray-20: var(--ui-color-gray-20);
+	--wa-color-gray-10: var(--ui-color-gray-10);
+	--wa-color-gray-05: var(--ui-color-gray-05);
+
+	--wa-color-text-normal: var(--ui-color-text-normal);
+	--wa-color-neutral-on-loud: var(--ui-color-text-on-loud);
+	--wa-color-neutral-fill-normal: var(--ui-color-neutrall-fill-normal);
+	--wa-color-text-quiet: var(--ui-color-text-quiet);
+	--wa-color-neutral-on-quiet: var(--ui-color-neutral-on-quiet);
+
+	--wa-font-size-xs: var(--ui-font-size-xs);
+	--wa-font-size-s: var(--ui-font-size-s);
+	--wa-font-size-m: var(--ui-font-size-m);
+	--wa-font-size-l: var(--ui-font-size-l);
+	--wa-font-size-xl: var(--ui-font-size-xl);
+	--wa-font-size-2xl: var(--ui-font-size-2xl);
+	--wa-font-size-3xl: var(--ui-font-size-3xl);
+	--wa-font-size-4xl: var(--ui-font-size-4xl);
+	--wa-font-size-5xl: var(--ui-font-size-5xl);
+
+	--wa-space-scale: var(--ui-spacing-scale);
+	--wa-space-3xs: var(--ui-spacing-3xs);
+	--wa-space-2xs: var(--ui-spacing-2xs);
+	--wa-space-xs: var(--ui-spacing-xs);
+	--wa-space-s: var(--ui-spacing-s);
+	--wa-space-m: var(--ui-spacing-m);
+	--wa-space-l: var(--ui-spacing-l);
+	--wa-space-xl: var(--ui-spacing-xl);
+	--wa-space-2xl: var(--ui-spacing-2xl);
+	--wa-space-3xl: var(--ui-spacing-3xl);
+	--wa-space-4xl: var(--ui-spacing-4xl);
+	--wa-space-5xl: var(--ui-spacing-5xl);
+
+	--wa-color-overlay-modal: var(--ui-overlay-background-color);
+
+	--track-color: var(--ui-track-color);
+
+	--wa-form-control-label-color: var(--ui-input-label-color);
+	--wa-form-control-label-font-weight: var(--ui-input-label-font-weight);
+	--wa-form-control-label-line-height: var(--ui-input-label-line-height);
+
+	--wa-border-radius-scale: var(--ui-border-radius-scale);
+	--wa-border-radius-s: var(--ui-border-radius-s);
+	--wa-border-radius-m: var(--ui-border-radius-m);
+	--wa-border-radius-l: var(--ui-border-radius-l);
+
+	/* --- Component settings --- */
+
+	/* Form hint */
+	--wa-form-control-hint-color: var(--ui-form-hint-color);
+	--wa-form-control-hint-font-weight: var(--ui-form-hint-font-weight);
+	--wa-form-control-hint-line-height: var(--ui-form-hint-line-height);
+}

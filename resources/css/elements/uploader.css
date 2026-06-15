@@ -1,0 +1,177 @@
+:root {
+	--uploader-min-item-height: 4.1875rem;
+}
+
+.uploader {
+	min-height: var(--uploader-min-item-height);
+
+	.uploader__trigger {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+		cursor: pointer;
+		min-height: var(--uploader-min-item-height);
+
+		.uploader__trigger-icon {
+			flex-shrink: 0;
+			line-height: 0;
+		}
+
+		.uploader__trigger-icon svg {
+			display: block;
+		}
+
+		input[type='file'] {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
+		}
+	}
+
+	&.has-files {
+		.uploader__trigger {
+			display: none;
+		}
+
+		.upload-area {
+			margin-top: 0;
+		}
+	}
+}
+
+.upload-file {
+	display: flex;
+	gap: var(--ui-spacing-m);
+	align-items: center;
+	border: solid 1px var(--bs-gray-300);
+	border-radius: 0.75rem;
+	padding: var(--ui-spacing-m);
+	min-height: var(--uploader-min-item-height);
+
+	figure {
+		margin: 0;
+	}
+
+	.upload-file__filename {
+		line-height: 1;
+	}
+
+	.upload-file__left {
+		display: flex;
+		align-items: center;
+		gap: var(--ui-spacing-m);
+		flex-shrink: 0;
+	}
+
+	.upload-file__spinner {
+		display: flex;
+		align-items: center;
+		width: 1.875rem;
+		position: relative;
+
+		div[data-role='spinner-container'] {
+			display: flex;
+			align-items: center;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+		}
+
+		.spinner {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.upload-file__check {
+		display: none;
+	}
+
+	.upload-file__error-icon {
+		display: none;
+	}
+
+	.upload-file__center {
+		flex: 1;
+		min-width: 0;
+		margin-right: auto;
+	}
+
+	.upload-file__msg {
+		line-height: 1;
+	}
+
+	.upload-file__menu {
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+
+		a {
+			cursor: pointer;
+		}
+	}
+
+	&.completed {
+		.upload-file__check {
+			display: block;
+		}
+
+		.spinner {
+			display: none;
+		}
+
+		figure[data-role='thumbnail'] {
+			opacity: 1;
+		}
+	}
+
+	figure[data-role='thumbnail'] {
+		opacity: 0.5;
+	}
+
+	&.has-thumb {
+		figure[data-role='thumbnail'] {
+			aspect-ratio: 1/1;
+			width: 1.875rem;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.upload-file__spinner {
+			i {
+				display: none;
+			}
+		}
+	}
+
+	&.error {
+		border-color: var(--bs-danger);
+		background: var(--bs-danger-bg);
+
+		.upload-file__msg {
+			color: var(--bs-danger);
+		}
+
+		.upload-file__spinner {
+			display: none;
+		}
+
+		.upload-file__check {
+			display: none;
+		}
+
+		.upload-file__error-icon {
+			display: inline-block;
+		}
+	}
+
+	& + & {
+		margin-top: var(--ui-spacing-m);
+	}
+}

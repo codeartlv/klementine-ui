@@ -1,0 +1,1 @@
+<wa-badge {{ $attributes->merge(['class' => '']) }}>{{ $label }}</wa-badge>

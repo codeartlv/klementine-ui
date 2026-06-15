@@ -1,0 +1,17 @@
+.spinner {
+	&.size-xl {
+		font-size: 4rem;
+	}
+
+	&.color-primary {
+		wa-spinner {
+			--indicator-color: var(--ui-color-brand-50);
+		}
+	}
+
+	&.color-white {
+		wa-spinner {
+			--indicator-color: var(--ui-color-gray-95);
+		}
+	}
+}

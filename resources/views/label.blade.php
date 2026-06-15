@@ -1,0 +1,1 @@
+<label class="form-label {{$required ? 'required':''}}">{{$text}}</label>

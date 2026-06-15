@@ -1,0 +1,26 @@
+{
+    "name": "codeartlv/klementine-ui",
+    "type": "library",
+	"version": "0.1.0",
+	"description": "A collection of UI components for Laravel applications.",
+	"license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Codeart\\Klementine\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Deniss Kozlovs",
+            "email": "deniss@codeart.lv"
+        }
+    ],
+    "require": {},
+	"extra": {
+        "laravel": {
+            "providers": [
+                "Codeart\\Klementine\\KlementineUiServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,5 @@
+wa-icon {
+	&::part(svg) {
+		fill: currentColor;
+	}
+}

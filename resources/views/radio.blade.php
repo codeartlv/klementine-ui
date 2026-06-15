@@ -1,0 +1,1 @@
+<wa-radio {{$attributes->merge(['value' => $value, 'checked' => $checked])}}>{{$label}}</wa-radio>

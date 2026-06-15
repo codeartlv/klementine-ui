@@ -1,0 +1,30 @@
+.form-hint {
+	font-size: var(--ui-form-hint-font-size);
+	color: var(--ui-form-hint-color);
+	font-weight: var(--ui-form-hint-font-weight);
+	line-height: var(--ui-form-hint-line-height);
+
+	&.invalid {
+		color: var(--ui-form-hint-error-color);
+	}
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--ui-form-group-gap);
+}
+
+.form-label {
+	color: var(--ui-input-label-color);
+	font-weight: var(--ui-input-label-font-weight);
+	line-height: var(--ui-input-label-line-height);
+	margin-bottom: var(--ui-input-label-margin);
+	display: inline-block;
+}
+
+wa-select {
+	&::part(form-control-label) {
+		margin-bottom: var(--ui-input-label-margin);
+	}
+}

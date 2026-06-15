@@ -1,0 +1,1 @@
+<wa-checkbox {{$attributes->merge(['value' => $value, 'checked' => $checked])}}>{{$label}}</wa-checkbox>
