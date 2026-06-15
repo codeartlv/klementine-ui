@@ -103,7 +103,7 @@ import path from 'path';
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@klementine-ui': path.resolve('klementine-ui/resources'),
+			'@klementine-ui': path.resolve('vendor/codeartlv/klementine-ui/resources'),
 		},
 	},
 });
@@ -351,7 +351,7 @@ return response()->json($response);
 // Or on success:
 $response = new FormResponse();
 $response->setSuccess(new FormSuccess('Saved successfully'));
-$response->addAction('redirect', '/dashboard');
+$response->addSuccessAction('redirect', '/dashboard');
 return response()->json($response);
 ```
 
