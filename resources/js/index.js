@@ -48,6 +48,20 @@ export class KlementineUI {
 		return KlementineUI.#instance;
 	}
 
+	loadAlpineComponents(modules) {
+		const userPromises = Object.entries(modules).map(([path, resolver]) => {
+			const componentName = path.split('/').pop().replace('.js', '');
+
+			return resolver().then((module) => {
+				window.Alpine.data(componentName, module.default);
+			});
+		});
+
+		this.componentPromises.push(...userPromises);
+
+		return this;
+	}
+
 	setupAlpine() {
 		// *** Alpine.js Integration ***
 		// Initialize Alpine.js and set it to the global window object
