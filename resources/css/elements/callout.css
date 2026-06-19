@@ -8,7 +8,7 @@ wa-callout {
 	> div {
 		display: flex;
 		align-items: center;
-		gap: var(--ui-spacing-xs);
+		gap: var(--wa-space-xs);
 	}
 
 	strong {

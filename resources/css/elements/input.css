@@ -1,6 +1,6 @@
 .form-input {
 	&.is-invalid {
-		--wa-form-control-border-color: var(--ui-input-error-border-color);
-		--wa-color-focus: var(--ui-input-error-border-color);
+		--wa-form-control-border-color: var(--wa-color-danger-border-loud);
+		--wa-color-focus: var(--wa-color-danger-fill-loud);
 	}
 }

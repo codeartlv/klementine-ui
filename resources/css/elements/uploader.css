@@ -1,9 +1,5 @@
-:root {
-	--uploader-min-item-height: 4.1875rem;
-}
-
 .uploader {
-	min-height: var(--uploader-min-item-height);
+	min-height: var(--ui-uploader-min-item-height);
 
 	.uploader__trigger {
 		display: flex;
@@ -11,7 +7,7 @@
 		gap: 0.5rem;
 		width: 100%;
 		cursor: pointer;
-		min-height: var(--uploader-min-item-height);
+		min-height: var(--ui-uploader-min-item-height);
 
 		.uploader__trigger-icon {
 			flex-shrink: 0;
@@ -45,12 +41,12 @@
 
 .upload-file {
 	display: flex;
-	gap: var(--ui-spacing-m);
+	gap: var(--wa-space-m);
 	align-items: center;
-	border: solid 1px var(--bs-gray-300);
-	border-radius: 0.75rem;
-	padding: var(--ui-spacing-m);
-	min-height: var(--uploader-min-item-height);
+	border: solid 1px var(--wa-color-surface-border);
+	border-radius: var(--wa-border-radius-l);
+	padding: var(--wa-space-m);
+	min-height: var(--ui-uploader-min-item-height);
 
 	figure {
 		margin: 0;
@@ -63,7 +59,7 @@
 	.upload-file__left {
 		display: flex;
 		align-items: center;
-		gap: var(--ui-spacing-m);
+		gap: var(--wa-space-m);
 		flex-shrink: 0;
 	}
 
@@ -151,11 +147,11 @@
 	}
 
 	&.error {
-		border-color: var(--bs-danger);
-		background: var(--bs-danger-bg);
+		border-color: var(--wa-color-danger-border-loud);
+		background: var(--wa-color-danger-fill-quiet);
 
 		.upload-file__msg {
-			color: var(--bs-danger);
+			color: var(--wa-color-danger-on-quiet);
 		}
 
 		.upload-file__spinner {
@@ -172,6 +168,6 @@
 	}
 
 	& + & {
-		margin-top: var(--ui-spacing-m);
+		margin-top: var(--wa-space-m);
 	}
 }

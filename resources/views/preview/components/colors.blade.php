@@ -1,13 +1,15 @@
 @php
-	$palettes = [
-		'brand' => 'Brand',
-		'gray' => 'Gray',
-		'success' => 'Success',
-		'warning' => 'Warning',
-		'danger' => 'Danger',
-	];
 
-	$shades = ['05', '10', '20', '30', '40', '50', '60', '70', '80', '90', '95'];
+$palettes = [
+	'brand' => 'Brand',
+	'neutral' => 'Neutral',
+	'success' => 'Success',
+	'warning' => 'Warning',
+	'danger' => 'Danger',
+];
+
+$shades = ['05', '10', '20', '30', '40', '50', '60', '70', '80', '90', '95'];
+
 @endphp
 
 <h2>Colors</h2>
@@ -28,18 +30,18 @@
 					@foreach ($shades as $shade)
 						<tr>
 							<td>
-								<pre>--ui-color-{{ $slug }}-{{ $shade }}</pre>
+								<pre>--wa-color-{{ $slug }}-{{ $shade }}</pre>
 							</td>
 							<td>
-								<div style="color:var(--ui-color-{{ $slug }}-{{ $shade }})">
-									--ui-color-{{ $slug }}-{{ $shade }}
+								<div style="color:var(--wa-color-{{ $slug }}-{{ $shade }})">
+									--wa-color-{{ $slug }}-{{ $shade }}
 								</div>
 							</td>
 							<td>
-								<div class="color-preview" style="background-color:var(--ui-color-{{ $slug }}-{{ $shade }})"></div>
+								<div class="color-preview" style="background-color:var(--wa-color-{{ $slug }}-{{ $shade }})"></div>
 							</td>
 							<td>
-								<div class="border-preview" style="border-color:var(--ui-color-{{ $slug }}-{{ $shade }})"></div>
+								<div class="border-preview" style="border-color:var(--wa-color-{{ $slug }}-{{ $shade }})"></div>
 							</td>
 						</tr>
 					@endforeach

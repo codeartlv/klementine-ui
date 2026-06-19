@@ -1,43 +1,43 @@
 [data-vc='calendar'] {
-	--tw-shadow: var(--ui-shadow-m);
-	border-radius: var(--ui-border-radius-m);
+  --tw-shadow: var(--wa-shadow-m);
+  border-radius: var(--wa-border-radius-m);
 }
 
 [data-vc-date-btn] {
-	border-radius: var(--ui-border-radius-s);
+  border-radius: var(--wa-border-radius-s);
 }
 
 [data-vc-theme='light'] {
-	.vc-date__btn {
-		color: var(--ui-color-text-normal);
+  .vc-date__btn {
+    color: var(--wa-color-text-normal);
 
-		&:hover {
-			background-color: var(--ui-color-neutrall-fill-normal);
-		}
-	}
+    &:hover {
+      background-color: var(--wa-color-neutral-fill-normal);
+    }
+  }
 
-	.vc-date[data-vc-date-today] {
-		.vc-date__btn {
-			background-color: var(--ui-color-neutrall-fill-normal);
-		}
-	}
+  .vc-date[data-vc-date-today] {
+    .vc-date__btn {
+      background-color: var(--wa-color-neutral-fill-normal);
+    }
+  }
 
-	.vc-week__day {
-		color: var(--ui-color-text-quiet);
-	}
+  .vc-week__day {
+    color: var(--wa-color-text-quiet);
+  }
 
-	.vc-date[data-vc-date-selected] {
-		.vc-date__btn {
-			background-color: var(--ui-color-brand-50);
-			color: var(--ui-color-text-on-loud);
-		}
-	}
+  .vc-date[data-vc-date-selected] {
+    .vc-date__btn {
+      background-color: var(--wa-color-brand-fill-loud);
+      color: var(--wa-color-brand-on-loud);
+    }
+  }
 
-	.vc-week__day[data-vc-week-day-off],
-	.vc-date[data-vc-date-holiday] .vc-date__btn,
-	.vc-date[data-vc-date-weekend] .vc-date__btn,
-	.vc-date[data-vc-date-holiday][data-vc-date-today] .vc-date__btn,
-	.vc-date[data-vc-date-weekend][data-vc-date-today] .vc-date__btn {
-		color: var(--ui-datepicker-holiday-color);
-	}
+  .vc-week__day[data-vc-week-day-off],
+  .vc-date[data-vc-date-holiday] .vc-date__btn,
+  .vc-date[data-vc-date-weekend] .vc-date__btn,
+  .vc-date[data-vc-date-holiday][data-vc-date-today] .vc-date__btn,
+  .vc-date[data-vc-date-weekend][data-vc-date-today] .vc-date__btn {
+    color: var(--wa-color-danger-on-quiet);
+  }
 }

@@ -1,17 +1,17 @@
 .spinner {
-	&.size-xl {
-		font-size: 4rem;
-	}
+  &.size-xl {
+    font-size: 4rem;
+  }
 
-	&.color-primary {
-		wa-spinner {
-			--indicator-color: var(--ui-color-brand-50);
-		}
-	}
+  &.color-primary {
+    wa-spinner {
+      --indicator-color: var(--wa-color-brand-fill-loud);
+    }
+  }
 
-	&.color-white {
-		wa-spinner {
-			--indicator-color: var(--ui-color-gray-95);
-		}
-	}
+  &.color-white {
+    wa-spinner {
+      --indicator-color: var(--wa-color-neutral-on-loud);
+    }
+  }
 }
