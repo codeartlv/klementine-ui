@@ -17,6 +17,7 @@
 @import 'elements/callout.css' layer(components);
 @import 'elements/dialog.css' layer(components);
 @import 'elements/icon.css' layer(components);
+@import 'elements/label.css' layer(components);
 @import 'elements/overlays.css' layer(components);
 @import 'elements/spinner.css' layer(components);
 @import 'elements/password.css' layer(components);

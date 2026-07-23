@@ -20,7 +20,8 @@
 	font-weight: var(--wa-form-control-label-font-weight);
 	line-height: var(--wa-form-control-label-line-height);
 	margin-bottom: var(--wa-space-xs);
-	display: inline-block;
+	display: block;
+	text-align: left;
 }
 
 wa-select {
