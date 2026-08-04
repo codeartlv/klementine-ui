@@ -1,3 +1,14 @@
 label + input {
 	margin-top: 0;
 }
+
+label {
+	&.required {
+		&::after {
+			content: '*';
+			color: var(--wa-color-danger);
+			margin-left: var(--wa-space-2xs);
+		}
+	}
+}
+
