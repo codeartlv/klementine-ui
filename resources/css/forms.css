@@ -25,7 +25,10 @@
 }
 
 wa-select {
-	&::part(form-control-label) {
-		margin-bottom: var(--wa-space-xs);
+	&.has-label {
+		&::part(form-control-label) {
+			margin-bottom: var(--wa-space-xs);
+		}
 	}
 }
+
