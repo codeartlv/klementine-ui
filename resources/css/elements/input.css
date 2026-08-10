@@ -1,7 +1,5 @@
 wa-select.is-invalid,
-wa-input.is-invalid,
-.form-input.is-invalid {
+wa-input.is-invalid {
 	--wa-form-control-border-color: var(--wa-color-danger-border-loud);
 	--wa-color-focus: var(--wa-color-danger-fill-loud);
 }
-
