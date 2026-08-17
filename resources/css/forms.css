@@ -15,20 +15,26 @@
 	gap: var(--wa-space-s);
 }
 
-.form-label {
+.form-control-label {
 	color: var(--wa-form-control-label-color);
 	font-weight: var(--wa-form-control-label-font-weight);
 	line-height: var(--wa-form-control-label-line-height);
-	margin-bottom: var(--wa-space-xs);
 	display: block;
 	text-align: left;
+}
+
+.form-control-label,
+wa-input::part(label),
+wa-textarea::part(label),
+wa-number-input::part(label) {
+	font-size: var(--wa-form-control-label-font-size);
+	margin-block-end: var(--wa-form-control-label-space-bottom);
 }
 
 wa-select {
 	&.has-label {
 		&::part(form-control-label) {
-			margin-bottom: var(--wa-space-xs);
+			margin-bottom: var(--wa-form-control-label-space-bottom);
 		}
 	}
 }
-

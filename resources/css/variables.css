@@ -2,6 +2,8 @@
 	--wa-form-control-label-color: var(--wa-color-text-normal);
 	--wa-form-control-label-font-weight: var(--wa-font-weight-normal);
 	--wa-form-control-label-line-height: 1.6;
+	--wa-form-control-label-font-size: var(--wa-font-size-m);
+	--wa-form-control-label-space-bottom: var(--wa-space-xs);
 
 	--wa-form-control-hint-color: var(--wa-color-neutral-60);
 	--wa-form-control-hint-font-weight: var(--wa-font-weight-normal);
