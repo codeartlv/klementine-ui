@@ -18,7 +18,7 @@ export default (settings) => ({
 	init() {
 		this.settings = {
 			overlay: 'button',
-			focus: null,
+			focus: this.$el.dataset.focus ?? null,
 			scroll: true,
 			alert: false,
 			...settings,
