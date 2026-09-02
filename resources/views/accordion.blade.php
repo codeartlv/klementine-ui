@@ -1,4 +1,4 @@
-<wa-accordion>
+<wa-accordion {{$attributes}}>
 	@foreach($items as $item)
 		<wa-accordion-item label="{{$item->caption}}">
 			{!! $item->contents !!}
