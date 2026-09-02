@@ -56,6 +56,7 @@ class KlementineUiServiceProvider extends ServiceProvider
 	{
 		$components = [
 			'avatar' => \Codeart\Klementine\View\Components\Avatar::class,
+			'accordion' => \Codeart\Klementine\View\Components\Accordion\Accordion::class,
 			'badge' => \Codeart\Klementine\View\Components\Badge::class,
 			'button' => \Codeart\Klementine\View\Components\Button::class,
 			'callout' => \Codeart\Klementine\View\Components\Callout::class,
