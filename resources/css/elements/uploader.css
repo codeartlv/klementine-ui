@@ -146,6 +146,12 @@
 		}
 	}
 
+	&.completed {
+		.upload-file__spinner {
+			display: none;
+		}
+	}
+
 	&.error {
 		border-color: var(--wa-color-danger-border-loud);
 		background: var(--wa-color-danger-fill-quiet);

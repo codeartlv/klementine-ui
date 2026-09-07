@@ -1,4 +1,5 @@
 import { addSpinner, removeSpinner, randomString } from '../helpers.js';
+import icon from '../ui-components/icon.js';
 import Sortable from 'sortablejs';
 
 class ManagedFile {
@@ -130,6 +131,22 @@ export default class Uploader {
 
 		this.files = [];
 
+		if (this._isFormUpload()) {
+			this.params.croproute = '';
+
+			if (this.params.fileOptions?.crop) {
+				delete this.params.fileOptions.crop;
+			}
+
+			const form = this.element.closest('form');
+
+			if (form) {
+				form.addEventListener('formdata', (event) => {
+					this._appendFilesToFormData(event.formData);
+				});
+			}
+		}
+
 		if (this.params.sortable) {
 			new Sortable(this.list, {
 				animation: 150,
@@ -193,6 +210,10 @@ export default class Uploader {
 	 * @param {object} option option object as above
 	 */
 	addOption(target, key, option) {
+		if (this._isFormUpload() && key === 'crop') {
+			return;
+		}
+
 		let addOptionToFile = (file, key, option) => {
 			file.options.set(key, this._normalizeOption(option));
 
@@ -225,6 +246,7 @@ export default class Uploader {
 	clear() {
 		this.clearIds();
 		this.files.forEach((f) => {
+			f.nativeFile = null;
 			if (f.thumbnailEl) f.thumbnailEl.remove();
 		});
 
@@ -360,6 +382,66 @@ export default class Uploader {
 		return thumb.querySelector('[data-role="spinner-container"]') || thumb;
 	}
 
+	_isFormUpload() {
+		return String(this.params.uploadroute || '').trim() === '';
+	}
+
+	_fileFieldName() {
+		const name = this.fieldName || 'files';
+
+		if (Number(this.params.limit) === 1) {
+			return name;
+		}
+
+		return name.endsWith('[]') ? name : `${name}[]`;
+	}
+
+	_exceedsMaxSize(nativeFile) {
+		const maxMb = Number(this.params.maxsize);
+
+		if (!maxMb || !nativeFile) {
+			return false;
+		}
+
+		return nativeFile.size > maxMb * 1024 * 1024;
+	}
+
+	_appendFilesToFormData(formData) {
+		const fieldName = this._fileFieldName();
+
+		this.files.forEach((file) => {
+			if (file.nativeFile && !file.error) {
+				formData.append(fieldName, file.nativeFile, file.nativeFile.name);
+			}
+		});
+	}
+
+	_markFileReady(file, thumb) {
+		file.status = 'ready';
+		file.error = false;
+		this._applyStateClasses(thumb, { ready: true, error: false });
+		this._paintThumbnail(thumb, file);
+		this._renderOptionsInto(file, thumb);
+		this.trigger('queueChange', this.files.slice());
+	}
+
+	_failFile(file, thumb, message) {
+		file.message = message;
+		file.error = true;
+		file.status = 'error';
+		this._applyStateClasses(thumb, { ready: false, error: true });
+
+		const msg = thumb.querySelector('[data-role="message"]');
+
+		if (msg) {
+			msg.innerText = file.message;
+		}
+
+		this._paintThumbnail(thumb, file);
+		this._renderOptionsInto(file, thumb);
+		this.trigger('queueChange', this.files.slice());
+	}
+
 	/*** Upload Flow ***/
 	_startUpload(nativeFile) {
 		// Create model immediately (pending), render skeleton thumbnail
@@ -388,14 +470,25 @@ export default class Uploader {
 			this._paintThumbnail(thumb, mf);
 		}
 
-		addSpinner(this._spinnerContainer(thumb));
 		this._appendThumbnailToList(thumb);
 		this._bindThumbnailEvents(thumb, mf);
 		this.files.push(mf);
 
 		this._checkLimits();
-		this._toggleSubmitDisabled(true);
 		this.trigger('queueChange', this.files.slice());
+
+		if (this._exceedsMaxSize(nativeFile)) {
+			this._failFile(mf, thumb, this.params.messages?.uploadMaxFilesize || 'File too large');
+			return;
+		}
+
+		if (this._isFormUpload()) {
+			this._markFileReady(mf, thumb);
+			return;
+		}
+
+		addSpinner(this._spinnerContainer(thumb));
+		this._toggleSubmitDisabled(true);
 
 		// Build and send XHR
 		const url = this.params.uploadroute;
@@ -628,6 +721,11 @@ export default class Uploader {
 		perFileEntries.forEach(([k, v]) => map.set(k, v));
 
 		let entries = Array.from(map.entries());
+
+		if (this._isFormUpload()) {
+			entries = entries.filter(([k]) => k !== 'crop');
+		}
+
 		if (file.error) {
 			entries = entries.filter(([k]) => k === 'remove');
 		}
@@ -658,10 +756,15 @@ export default class Uploader {
 			const a = document.createElement('a');
 			a.className = 'dropdown-item';
 			a.setAttribute('data-action', key);
-			a.innerHTML = `
-        <i class="icon-${opt.icon}">x</i>
-        <span>${optionCaption}</span>
-      `.trim();
+
+			if (opt.icon) {
+				a.appendChild(icon({ name: opt.icon }));
+			}
+
+			const caption = document.createElement('span');
+			caption.textContent = optionCaption ?? '';
+			a.appendChild(caption);
+
 			a.addEventListener('click', (ev) => {
 				ev.preventDefault();
 				if (typeof opt.callback === 'function') {
@@ -701,7 +804,7 @@ export default class Uploader {
 
 	/*** Delete ***/
 	deleteFile(file, thumbnailEl, { silent = false } = {}) {
-		if (file?.id && this.params.deleteroute.length > 0) {
+		if (file?.id && this.params.deleteroute.length > 0 && !this._isFormUpload()) {
 			const url = this.params.deleteroute;
 			const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 			fetch(url, {
@@ -712,6 +815,10 @@ export default class Uploader {
 				},
 				body: JSON.stringify({ id: file.id }),
 			}).catch(() => {});
+		}
+
+		if (file) {
+			file.nativeFile = null;
 		}
 
 		if (thumbnailEl && thumbnailEl.remove) thumbnailEl.remove();

@@ -3,7 +3,7 @@ $params = $attributes->getAttributes();
 $params['files'] = $files ?? [];
 $params['maxsize'] = ((int) ini_get('upload_max_filesize'));
 
-$params['uploadroute'] = $params['uploadroute'] ?? ($params['data-uploadroute'] ?? '');
+$params['uploadroute'] = trim((string) ($params['uploadroute'] ?? ($params['data-uploadroute'] ?? '')));
 $params['deleteroute'] = $params['deleteroute'] ?? ($params['data-deleteroute'] ?? '');
 $params['croproute'] = $params['croproute'] ?? ($params['data-croproute'] ?? '');
 $params['submitbtn'] = $params['submitbtn'] ?? ($params['data-submitbtn'] ?? '');
@@ -40,8 +40,8 @@ $placeholder = $limit === 1 ? __('klementine-ui::components.uploader.upload_plac
 					<div data-role="spinner-container"></div>
 				</div>
 				<figure data-role="thumbnail"></figure>
-				<span class="upload-file__check ri ri-checkmark"></span>
-				<span class="upload-file__error-icon ri ri-alert"></span>
+				<x-ui-icon class="upload-file__check" name="check" />
+				<x-ui-icon class="upload-file__error-icon" name="error" />
 			</div>
 
 			<div class="upload-file__center">
