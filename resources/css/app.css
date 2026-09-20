@@ -15,6 +15,7 @@
 @import 'elements/input.css' layer(components);
 @import 'elements/button.css' layer(components);
 @import 'elements/callout.css' layer(components);
+@import 'elements/pagination.css' layer(components);
 @import 'elements/dialog.css' layer(components);
 @import 'elements/icon.css' layer(components);
 @import 'elements/label.css' layer(components);

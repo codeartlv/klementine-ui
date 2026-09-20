@@ -18,4 +18,7 @@ return [
 		'upload_max_filesize' => 'File size exceeds allowed size (:max MB)',
 		'upload_error' => 'Upload error',
 	],
+	'pagination' => [
+		'label' => 'Pagination',
+	],
 ];

@@ -1,0 +1,5 @@
+wa-pagination {
+	display: flex;
+	justify-content: flex-end;
+	margin-block-start: var(--wa-space-l);
+}

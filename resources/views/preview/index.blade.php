@@ -36,6 +36,7 @@
 			'textarea',
 			'datepicker',
 			'password',
+			'pagination',
 			'uploader',
 			'input',
 			'form',

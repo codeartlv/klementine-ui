@@ -65,6 +65,7 @@ class KlementineUiServiceProvider extends ServiceProvider
 			'form' => \Codeart\Klementine\View\Components\Forms\FormElement::class,
 			'input' => \Codeart\Klementine\View\Components\Input::class,
 			'label' => \Codeart\Klementine\View\Components\Label::class,
+			'pagination' => \Codeart\Klementine\View\Components\Pagination::class,
 			'password' => \Codeart\Klementine\View\Components\Password::class,
 			'radio' => \Codeart\Klementine\View\Components\Radio::class,
 			'select' => \Codeart\Klementine\View\Components\Select\Select::class,

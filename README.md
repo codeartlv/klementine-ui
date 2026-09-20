@@ -457,6 +457,42 @@ Translations for placeholders and error messages come from `lang/{locale}/compon
 <x-ui-icon name="circle-xmark" size="l" />
 ```
 
+### Pagination
+
+Wraps Web Awesome `<wa-pagination>`. Pass a Laravel paginator for totals, the current page, page size, and `href-template` links that keep the current query string.
+
+```blade
+<x-ui-pagination :paginator="$users" />
+<x-ui-pagination :paginator="$users" with-summary with-edges />
+```
+
+```php
+$users = User::query()->paginate(15);
+```
+
+Links use Laravel's `page` query parameter (or the paginator's page name) and `{page}` in `href-template`, so changing page is a normal request — no JavaScript state. Hidden automatically when there is only one page.
+
+Manual values work without a paginator:
+
+```blade
+<x-ui-pagination :total="237" :page="3" :page-size="10" href-template="?page={page}" />
+```
+
+| Prop / attribute   | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| `paginator`        | Laravel `LengthAwarePaginator` (or simple `Paginator`)                      |
+| `total`            | Item count (taken from the paginator when omitted)                          |
+| `page`             | Current page, starting at 1                                                 |
+| `page-size`        | Items per page (Laravel default `15` when omitted)                          |
+| `href-template`    | URL with `{page}` placeholder; built from the paginator when omitted        |
+| `appearance`       | `outlined`, `filled`, `plain`                                               |
+| `format`           | `standard`, `compact`                                                       |
+| `with-summary`     | Show "1–10 of 237"                                                          |
+| `with-edges`       | First / last page buttons                                                   |
+| `without-nav`      | Hide previous / next                                                        |
+| `hide-single-page` | Do not render when there is only one page (default `true`)                  |
+| `label`            | Accessible name for screen readers                                          |
+
 ### Form group
 
 Layout wrapper for stacking form fields:
