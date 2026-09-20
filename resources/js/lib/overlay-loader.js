@@ -4,6 +4,15 @@ import { EventEmitter, element, attributes, addSpinner } from '../helpers.js';
 import button from '../ui-components/button.js';
 import callout from '../ui-components/callout.js';
 
+/**
+ * wa-select / wa-dropdown emit the same wa-show / wa-hide events as dialogs.
+ * Those bubble, so OverlayLoader must ignore events that did not originate
+ * on the overlay host — otherwise picking a select option closes the modal.
+ */
+function isHostEvent(event, host) {
+	return event.target === host;
+}
+
 export function overlayShell(tagName, data = {}) {
 	data = {
 		label: '',
@@ -68,8 +77,18 @@ export default class OverlayLoader {
 				return;
 			}
 
-			this.overlayElement.addEventListener('wa-after-hide', () => resolve(), { once: true });
-			this.overlayElement.open = false;
+			const overlayEl = this.overlayElement;
+			const onHide = (event) => {
+				if (!isHostEvent(event, overlayEl)) {
+					return;
+				}
+
+				overlayEl.removeEventListener('wa-after-hide', onHide);
+				resolve();
+			};
+
+			overlayEl.addEventListener('wa-after-hide', onHide);
+			overlayEl.open = false;
 		});
 	}
 
@@ -139,7 +158,11 @@ export default class OverlayLoader {
 		this._applyOptions(overlayEl, options);
 
 		return new Promise((resolve) => {
-			overlayEl.addEventListener('wa-after-show', () => {
+			overlayEl.addEventListener('wa-after-show', (event) => {
+				if (!isHostEvent(event, overlayEl)) {
+					return;
+				}
+
 				if (window.Alpine) {
 					window.Alpine.initTree(overlayEl);
 				}
@@ -153,7 +176,11 @@ export default class OverlayLoader {
 				resolve(overlayEl);
 			});
 
-			overlayEl.addEventListener('wa-after-hide', () => {
+			overlayEl.addEventListener('wa-after-hide', (event) => {
+				if (!isHostEvent(event, overlayEl)) {
+					return;
+				}
+
 				this.trigger('close');
 				window[this.#globalKey] = null;
 

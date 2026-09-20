@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { setBasePath } from '@awesome.me/webawesome/dist/utilities/base-path.js';
 import { registerIconLibrary } from '@awesome.me/webawesome/dist/webawesome.js';
+import { patchWebAwesomeForAlpine } from './lib/webawesome-alpine.js';
 
 import '@awesome.me/webawesome/dist/components/button/button.js';
 import '@awesome.me/webawesome/dist/components/icon/icon.js';
@@ -123,6 +124,7 @@ export class KlementineUI {
 		this.started = true;
 
 		Promise.all(this.componentPromises).then(() => {
+			patchWebAwesomeForAlpine();
 			this.setupCallbacks.forEach((callback) => callback(window.Alpine));
 
 			window.Alpine.start();

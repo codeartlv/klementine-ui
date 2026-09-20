@@ -410,6 +410,8 @@ dialog.close();
 | `autoclose`     | Enables `light-dismiss` on overlay click   |
 | `animations`    | Set `false` to disable show/hide animation |
 
+`<wa-select>`, `<wa-dropdown>`, and `<wa-details>` emit the same `wa-show` / `wa-hide` events as the overlay. OverlayLoader ignores those unless `event.target` is the overlay host, so choosing a select option does not close the dialog or drawer.
+
 ### Drawer
 
 Same API as dialog, backed by `<wa-drawer>`:
@@ -486,7 +488,7 @@ KlementineUI.configureAlpine((Alpine) => {
 	.start();
 ```
 
-`start()` loads all Alpine components from `alpine-components/` and calls `Alpine.start()`.
+`start()` loads all Alpine components from `alpine-components/` and calls `Alpine.start()`. Before Alpine starts, Web Awesome checkbox, radio, and switch hosts are patched so Alpine `x-model` reads `.checked` instead of `.value`.
 
 ### UI component factories
 
