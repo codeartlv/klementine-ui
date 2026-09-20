@@ -18,13 +18,13 @@ $limit = (int) ($params['limit'] ?? 1);
 $placeholder = $limit === 1 ? __('klementine-ui::components.uploader.upload_placeholder_single') : __('klementine-ui::components.uploader.upload_placeholder');
 @endphp
 
-<div class="uploader uploader--{{$class}}" x-data="fileUploader" {{$attributes}}>
+<div class="uploader uploader--{{$theme}} uploader--{{$class}}" x-data="fileUploader" {{$attributes}}>
 	<label class="uploader__trigger" data-role="trigger">
 		<input type="file" name="{{$name}}" />
 		<span class="uploader__trigger-icon" aria-hidden="true">
 			<x-ui-icon name="upload" />
+			<span class="uploader__trigger-text">{{ $placeholder }}</span>
 		</span>
-		<span class="uploader__trigger-text">{{ $placeholder }}</span>
 	</label>
 
 	<div data-role="list" class="upload-area"></div>
@@ -35,22 +35,27 @@ $placeholder = $limit === 1 ? __('klementine-ui::components.uploader.upload_plac
 
 	<template data-role="thumbnail">
 		<div class="upload-file uploader__item" data-id="0">
-			<div class="upload-file__left">
+			<div class="upload-file__preview">
 				<div class="upload-file__spinner">
 					<div data-role="spinner-container"></div>
 				</div>
-				<figure data-role="thumbnail"></figure>
-				<x-ui-icon class="upload-file__check" name="check" />
-				<x-ui-icon class="upload-file__error-icon" name="error" />
+				<figure class="upload-file__image" data-role="thumbnail">
+					<x-ui-icon name="document" />
+				</figure>
 			</div>
+			<div class="upload-file__main">
+				<header>
+					<div class="upload-file__captions">
+						<span class="upload-file__filename" data-role="filename"></span>
+						<div class="upload-file__msg" data-role="message"></div>
+						<div class="upload-file__progress">
+							<div data-role="progress"></div>
+						</div>
+					</div>
 
-			<div class="upload-file__center">
-				<span class="upload-file__icon fiv-sqo" data-role="file-icon"></span>
-				<span class="upload-file__filename" data-role="filename"></span>
-				<div class="upload-file__msg" data-role="message"></div>
+					<div class="upload-file__menu" data-role="menu"></div>
+				</header>
 			</div>
-
-			<div class="upload-file__menu" data-role="menu"></div>
 		</div>
 	</template>
 

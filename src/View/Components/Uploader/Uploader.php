@@ -14,6 +14,7 @@ class Uploader extends Component
 	 */
 	public function __construct(
 		public string $class = 'default',
+		public string $theme = 'list',
 		public ?string $name = 'files',
 		public array $files = [],
 	) {

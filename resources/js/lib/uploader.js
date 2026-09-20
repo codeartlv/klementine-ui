@@ -53,7 +53,9 @@ class ManagedFile {
 		}
 
 		if (this.nativeFile && typeof this.nativeFile.type === 'string') {
-			return ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(this.nativeFile.type);
+			return ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(
+				this.nativeFile.type,
+			);
 		}
 		if (this.extension) {
 			return ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'].includes(
@@ -88,7 +90,7 @@ export default class Uploader {
 			fileOptions: {
 				remove: {
 					caption: '',
-					icon: 'close',
+					icon: 'delete',
 					available: (file) => true,
 					callback: (file, thumbnailEl, uploader) => {
 						uploader.deleteFile(file, thumbnailEl);
@@ -449,7 +451,9 @@ export default class Uploader {
 			nativeFile,
 			filename: nativeFile.name ?? null,
 			extension:
-				nativeFile.name && nativeFile.name.includes('.') ? nativeFile.name.split('.').pop() : null,
+				nativeFile.name && nativeFile.name.includes('.')
+					? nativeFile.name.split('.').pop()
+					: null,
 			status: 'pending',
 			error: false,
 		});
@@ -496,7 +500,9 @@ export default class Uploader {
 		const xhr = new XMLHttpRequest();
 		xhr.open('POST', url);
 
-		const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+		const csrfToken = document
+			.querySelector('meta[name="csrf-token"]')
+			?.getAttribute('content');
 		if (csrfToken) xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
 
 		const progressEl = thumb.querySelector('[data-role="progress"]');
@@ -540,7 +546,8 @@ export default class Uploader {
 				mf.id = f.id ?? null;
 				mf.type = f.type ?? mf.type;
 				mf.caption = f.caption ?? mf.caption;
-				mf.thumbnail = typeof f.thumbnail === 'string' && f.thumbnail ? f.thumbnail : mf.thumbnail;
+				mf.thumbnail =
+					typeof f.thumbnail === 'string' && f.thumbnail ? f.thumbnail : mf.thumbnail;
 				mf.image = f.image ?? mf.image;
 				mf.filename = f.filename ?? mf.filename;
 				mf.extension = f.extension ?? mf.extension;
@@ -561,7 +568,11 @@ export default class Uploader {
 				return;
 			}
 
-			mf.message = (response && response.message) || xhr.statusText || this.params.messages?.uploadError || 'Upload error';
+			mf.message =
+				(response && response.message) ||
+				xhr.statusText ||
+				this.params.messages?.uploadError ||
+				'Upload error';
 			mf.error = true;
 			mf.status = 'error';
 
@@ -667,7 +678,8 @@ export default class Uploader {
 		}
 
 		if (filenameEl) {
-			filenameEl.innerText = file.filename || (file.image ? file.image.split('/').pop() : '') || '';
+			filenameEl.innerText =
+				file.filename || (file.image ? file.image.split('/').pop() : '') || '';
 		}
 
 		if (iconEl) {
@@ -755,6 +767,7 @@ export default class Uploader {
 
 			const a = document.createElement('a');
 			a.className = 'dropdown-item';
+			a.href = 'javascript:;';
 			a.setAttribute('data-action', key);
 
 			if (opt.icon) {
@@ -806,7 +819,9 @@ export default class Uploader {
 	deleteFile(file, thumbnailEl, { silent = false } = {}) {
 		if (file?.id && this.params.deleteroute.length > 0 && !this._isFormUpload()) {
 			const url = this.params.deleteroute;
-			const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+			const csrfToken = document
+				.querySelector('meta[name="csrf-token"]')
+				?.getAttribute('content');
 			fetch(url, {
 				method: 'POST',
 				headers: {
