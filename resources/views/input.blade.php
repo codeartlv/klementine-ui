@@ -1,9 +1,15 @@
 @props([
 	'icon' => null,
 	'icon_end' => null,
+	'id' => null,
 ])
 
 @php
+
+	if(!$id) {
+		$id = 'inp'.uniqid();
+	}
+
 	$classes = [];
 
 	if ($icon_end) {
@@ -14,10 +20,10 @@
 
 <div class="form-element">
 	@if ($label)
-		<x-ui-label :text="$label" :required="$required" />
+		<x-ui-label :text="$label" :required="$required" :for="$id" />
 	@endif
 
-	<wa-input {{ $attributes }} name="{{ $name }}" value="{{ $value }}">
+	<wa-input {{ $attributes }} name="{{ $name }}" value="{{ $value }}" id="{{$id}}" >
 		@if($icon)
 			<wa-icon slot="start" name="{{ $icon }}"></wa-icon>
 		@endif
