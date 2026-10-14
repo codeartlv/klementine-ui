@@ -3,3 +3,11 @@ wa-input.is-invalid {
 	--wa-form-control-border-color: var(--wa-color-danger-border-loud);
 	--wa-color-focus: var(--wa-color-danger-fill-loud);
 }
+
+wa-select.no-label-text,
+wa-input.no-label-text,
+wa-textarea.no-label-text {
+	&::part(label) {
+		display: none;
+	}
+}

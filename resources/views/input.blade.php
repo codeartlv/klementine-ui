@@ -2,6 +2,7 @@
 	'icon' => null,
 	'icon_end' => null,
 	'id' => null,
+	'label' => null,
 ])
 
 @php
@@ -16,9 +17,15 @@
 		$classes[] = 'has-icon';
 		$classes[] = 'has-end-icon';
 	}
+
+	if (!$label) {
+		$attributes = $attributes->merge([
+			'class' => 'no-label-text'
+		]);
+	}
 @endphp
 
-<div class="form-element">
+<div class="form-element {{implode(' ', $classes)}}">
 	@if ($label)
 		<x-ui-label :text="$label" :required="$required" :for="$id" />
 	@endif
