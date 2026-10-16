@@ -26,11 +26,7 @@
 @endphp
 
 <div class="form-element {{implode(' ', $classes)}}">
-	@if ($label)
-		<x-ui-label :text="$label" :required="$required" :for="$id" />
-	@endif
-
-	<wa-input {{ $attributes }} name="{{ $name }}" value="{{ $value }}" id="{{$id}}" >
+	<wa-input {{ $attributes }} label="{{$label}}" name="{{ $name }}" value="{{ $value }}" id="{{$id}}" >
 		@if($icon)
 			<wa-icon slot="start" name="{{ $icon }}"></wa-icon>
 		@endif
@@ -45,3 +41,4 @@
 		<div class="form-hint">{{ $hint }}</div>
 	@endif
 </div>
+
