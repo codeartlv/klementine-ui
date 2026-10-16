@@ -26,10 +26,12 @@
 .form-control-label,
 wa-input::part(label),
 wa-textarea::part(label),
-wa-number-input::part(label) {
+wa-number-input::part(label),
+wa-select::part(label) {
 	font-size: var(--wa-form-control-label-font-size);
 	margin-block-end: var(--wa-form-control-label-space-bottom);
 }
+
 
 wa-select {
 	&.has-label {
