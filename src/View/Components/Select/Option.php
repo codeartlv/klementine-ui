@@ -10,7 +10,8 @@ class Option implements Arrayable
 		public $value,
 		public string $label,
 		public bool $selected = false,
-		public bool $disabled = false
+		public bool $disabled = false,
+		public ?string $image = null,
 	) {
 		;
 	}
@@ -22,6 +23,7 @@ class Option implements Arrayable
 			'label' => $this->label,
 			'selected' => $this->selected,
 			'disabled' => $this->disabled,
+			'image' => $this->image,
 		];
 	}
 }

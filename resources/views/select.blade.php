@@ -17,15 +17,28 @@
 		@foreach ($options as $item)
 			@if (method_exists($item, 'options'))
 				<small>{{$item->label}}</small>
+
 				@foreach ($item->options() as $option)
-					<wa-option value="{{$option->value}}" {{$option->disabled ? 'disabled':''}} {{$option->selected?'selected':''}}>{{$option->label}}</wa-option>
+					<wa-option value="{{$option->value}}" {{$option->disabled ? 'disabled':''}} {{$option->selected?'selected':''}}>
+						@if($option->image)
+							<img slot="start" src="{{ $option->image }}" alt="">
+						@endif
+						
+						{{$option->label}}
+					</wa-option>
 				@endforeach
 
 				@if(!$loop->last)
 					<wa-divider></wa-divider>
 				@endif
 			@else
-				<wa-option value="{{$item->value}}" {{$item->disabled ? 'disabled':''}} {{$item->selected?'selected':''}}>{{$item->label}}</wa-option>
+				<wa-option value="{{$item->value}}" {{$item->disabled ? 'disabled':''}} {{$item->selected?'selected':''}}>
+					@if($item->image)
+						<img slot="start" src="{{ $item->image }}" alt="">
+					@endif
+					
+					{{$item->label}}
+				</wa-option>
 			@endif
 		@endforeach
 	</wa-select>
