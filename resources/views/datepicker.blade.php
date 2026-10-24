@@ -1,4 +1,4 @@
-<div x-data="datepicker('{{ $value?->format('Y-m-d') ?? '' }}', { displayFormat: '{{ $displayFormat }}' })" class="w-full max-w-xs">
+<div x-data="datepicker('{{ $value?->format('Y-m-d') ?? '' }}', { displayFormat: '{{ $displayFormat }}', min: '{{ $min }}', max: '{{ $max }}' })" class="w-full max-w-xs">
     <input type="hidden" name="{{$name}}" :value="hiddenDate" />
 
     <wa-input x-ref="waInput" {{$attributes}} clearable @wa-clear="clearDate()">

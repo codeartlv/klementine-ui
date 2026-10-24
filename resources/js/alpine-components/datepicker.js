@@ -4,6 +4,8 @@ export default (initialDate = '', settings = {}) => ({
 	hiddenDate: initialDate,
 	calendarInstance: null,
 	displayFormat: settings.displayFormat || 'd.m.Y',
+	min: settings.min || '',
+	max: settings.max || '',
 
 	formatForDisplay(isoString) {
 		if (!isoString) {
@@ -24,10 +26,11 @@ export default (initialDate = '', settings = {}) => ({
 			this.$refs.waInput.value = this.formatForDisplay(this.hiddenDate);
 		}
 
-		this.calendarInstance = new Calendar(this.$refs.waInput, {
+		const options = {
 			type: 'default',
 			inputMode: true,
 			selectedTheme: 'light',
+			selectedDates: this.hiddenDate ? [this.hiddenDate] : [],
 
 			settings: {
 				selected: {
@@ -45,8 +48,17 @@ export default (initialDate = '', settings = {}) => ({
 					self.hide();
 				}
 			},
-		});
+		};
 
+		if (this.min) {
+			options.dateMin = this.min;
+		}
+
+		if (this.max) {
+			options.dateMax = this.max;
+		}
+
+		this.calendarInstance = new Calendar(this.$refs.waInput, options);
 		this.calendarInstance.init();
 	},
 
@@ -55,7 +67,12 @@ export default (initialDate = '', settings = {}) => ({
 		this.$refs.waInput.value = '';
 
 		if (this.calendarInstance) {
-			this.calendarInstance.settings.selected.dates = [];
+			this.calendarInstance.selectedDates = [];
+
+			if (this.calendarInstance.settings?.selected) {
+				this.calendarInstance.settings.selected.dates = [];
+			}
+
 			this.calendarInstance.update();
 		}
 	},

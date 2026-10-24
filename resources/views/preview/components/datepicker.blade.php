@@ -23,5 +23,14 @@
 				<pre>@php echo htmlspecialchars('label="Datepicker label"'); @endphp</pre>
 			</td>
 		</tr>
+		<tr>
+			<td>No future dates</td>
+			<td>
+				<x-ui-datepicker label="Datepicker label" max="today" />
+			</td>
+			<td>
+				<pre>@php echo htmlspecialchars('max="today"'); @endphp</pre>
+			</td>
+		</tr>
 	</tbody>
 </table>
