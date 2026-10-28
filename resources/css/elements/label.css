@@ -2,13 +2,10 @@ label + input {
 	margin-top: 0;
 }
 
-label {
-	&.required {
-		&::after {
-			content: '*';
-			color: var(--wa-color-danger);
-			margin-left: var(--wa-space-2xs);
-		}
-	}
+label.required::after,
+wa-input.required::part(label)::after {
+	content: '*';
+	color: var(--wa-color-danger);
+	margin-left: var(--wa-space-2xs);
+	font-style: normal;
 }
-

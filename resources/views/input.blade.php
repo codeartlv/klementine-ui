@@ -3,6 +3,7 @@
 	'icon_end' => null,
 	'id' => null,
 	'label' => null,
+	'required' => false,
 ])
 
 @php
@@ -21,6 +22,12 @@
 	if (!$label) {
 		$attributes = $attributes->merge([
 			'class' => 'no-label-text'
+		]);
+	}
+
+	if ($required) {
+		$attributes = $attributes->merge([
+			'class' => 'required'
 		]);
 	}
 @endphp
