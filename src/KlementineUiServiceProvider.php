@@ -55,6 +55,7 @@ class KlementineUiServiceProvider extends ServiceProvider
 	protected function setupComponents(): void
 	{
 		$components = [
+			'autocomplete' => \Codeart\Klementine\View\Components\Autocomplete::class,
 			'avatar' => \Codeart\Klementine\View\Components\Avatar::class,
 			'accordion' => \Codeart\Klementine\View\Components\Accordion\Accordion::class,
 			'badge' => \Codeart\Klementine\View\Components\Badge::class,

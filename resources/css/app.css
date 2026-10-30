@@ -13,6 +13,7 @@
 /* --- Component layer --- */
 @import 'forms' layer(components);
 @import 'elements/input.css' layer(components);
+@import 'elements/autocomplete.css' layer(components);
 @import 'elements/button.css' layer(components);
 @import 'elements/callout.css' layer(components);
 @import 'elements/pagination.css' layer(components);

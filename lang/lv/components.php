@@ -18,4 +18,7 @@ return [
 		'upload_max_filesize' => 'Fails pārsniedz maksimālo izmēru (:max MB)',
 		'upload_error' => 'Augšupielādes kļūda',
 	],
+	'autocomplete' => [
+		'no_results' => 'Nekas netika atrasts',
+	],
 ];

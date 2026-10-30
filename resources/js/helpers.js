@@ -4,7 +4,11 @@ import spinner from './ui-components/spinner.js';
  * Safely escapes double quotes to prevent HTML breakage.
  */
 function escapeHtml(value) {
-	return String(value).replace(/"/g, '&quot;');
+	return String(value)
+		.replaceAll('&', '&amp;')
+		.replaceAll('"', '&quot;')
+		.replaceAll('<', '&lt;')
+		.replaceAll('>', '&gt;');
 }
 
 /**

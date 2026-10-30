@@ -18,6 +18,9 @@ return [
 		'upload_max_filesize' => 'File size exceeds allowed size (:max MB)',
 		'upload_error' => 'Upload error',
 	],
+	'autocomplete' => [
+		'no_results' => 'No results found',
+	],
 	'pagination' => [
 		'label' => 'Pagination',
 	],
