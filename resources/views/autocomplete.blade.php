@@ -9,6 +9,7 @@
 	'value' => '',
 	'source' => '',
 	'minLength' => 1,
+	'lookup' => false,
 ])
 
 @php
@@ -42,15 +43,19 @@
 
 <div
 	class="form-element {{ implode(' ', $classes) }}"
-	x-data="autocomplete({{ \Illuminate\Support\Js::from($source) }}, {{ (int) $minLength }}, {{ \Illuminate\Support\Js::from(__('klementine-ui::components.autocomplete.no_results')) }})"
+	x-data="autocomplete({{ \Illuminate\Support\Js::from($source) }}, {{ (int) $minLength }}, {{ \Illuminate\Support\Js::from(__('klementine-ui::components.autocomplete.no_results')) }}, {{ $lookup ? 'true' : 'false' }}, {{ \Illuminate\Support\Js::from($lookup ? (string) $value : '') }})"
 >
 	<div class="autocomplete__field">
+		@if ($lookup)
+			<input type="hidden" name="{{ $name }}" value="{{ $value }}" x-ref="value">
+		@endif
+
 		<wa-input
 			x-ref="field"
 			{{ $attributes }}
 			label="{{ $label }}"
-			name="{{ $name }}"
-			value="{{ $value }}"
+			@unless ($lookup) name="{{ $name }}" @endunless
+			value="{{ $lookup ? '' : $value }}"
 			id="{{ $id }}"
 			@if ($required) required @endif
 		>
@@ -60,6 +65,20 @@
 
 			@if ($icon_end)
 				<wa-icon slot="end" name="{{ $icon_end }}"></wa-icon>
+			@endif
+
+			@if ($lookup)
+				<button
+					slot="end"
+					type="button"
+					class="autocomplete__clear"
+					@if ($value === '') hidden @endif
+					x-bind:hidden="selectedId === ''"
+					x-on:click="clearSelection()"
+					aria-label="{{ __('klementine-ui::components.autocomplete.clear') }}"
+				>
+					<wa-icon name="close"></wa-icon>
+				</button>
 			@endif
 		</wa-input>
 

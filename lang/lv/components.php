@@ -20,5 +20,6 @@ return [
 	],
 	'autocomplete' => [
 		'no_results' => 'Nekas netika atrasts',
+		'clear' => 'Notīrīt',
 	],
 ];

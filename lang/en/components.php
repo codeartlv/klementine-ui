@@ -20,6 +20,7 @@ return [
 	],
 	'autocomplete' => [
 		'no_results' => 'No results found',
+		'clear' => 'Clear',
 	],
 	'pagination' => [
 		'label' => 'Pagination',

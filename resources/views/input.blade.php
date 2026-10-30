@@ -33,7 +33,7 @@
 @endphp
 
 <div class="form-element {{implode(' ', $classes)}}">
-	<wa-input {{ $attributes }} label="{{$label}}" name="{{ $name }}" value="{{ $value }}" id="{{$id}}" >
+	<wa-input {{ $attributes }} label="{{$label}}" @if ($name !== '') name="{{ $name }}" @endif value="{{ $value }}" id="{{$id}}" >
 		@if($icon)
 			<wa-icon slot="start" name="{{ $icon }}"></wa-icon>
 		@endif

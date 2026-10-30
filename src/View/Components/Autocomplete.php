@@ -14,6 +14,7 @@ class Autocomplete extends Component
 		public string $source = '',
 		public int $minLength = 1,
 		public bool $required = false,
+		public bool $lookup = false,
 	) {
 	}
 

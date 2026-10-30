@@ -59,3 +59,19 @@
 	padding: var(--wa-space-xs) var(--wa-space-s);
 	font-style: italic;
 }
+
+.autocomplete__clear {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--wa-color-text-quiet);
+	cursor: pointer;
+}
+
+.autocomplete__clear[hidden] {
+	display: none;
+}
