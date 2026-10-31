@@ -2,4 +2,11 @@ wa-button {
 	&.block {
 		width: 100%;
 	}
+
+	&.no-label {
+		wa-icon {
+			margin-inline-end: 0 !important;
+		}
+	}
 }
+
