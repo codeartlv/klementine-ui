@@ -1,43 +1,110 @@
-[data-vc='calendar'] {
-  --tw-shadow: var(--wa-shadow-m);
-  border-radius: var(--wa-border-radius-m);
+/*
+ * vanilla-calendar-pro stays on its light theme. The popup is created once,
+ * so its theme attribute cannot follow the app. These tokens already change
+ * under .wa-light and .wa-dark, and the library reads them through --vc-*.
+ */
+
+[data-vc-theme='light'].vc {
+	--tw-shadow: var(--wa-shadow-m);
+	border: 1px solid var(--wa-color-surface-border);
+	border-radius: var(--wa-border-radius-m);
+	font-family: var(--wa-font-family-body);
+	color-scheme: inherit;
+
+	--vc-bg: var(--wa-color-surface-raised);
+	--vc-color: var(--wa-color-text-normal);
+	--vc-focus-outline-color: var(--wa-color-focus);
+	--vc-header-color: var(--wa-color-text-normal);
+	--vc-title-color: var(--wa-color-text-normal);
+	--vc-title-color-hover: var(--wa-color-text-quiet);
+	--vc-title-color-disabled: var(--wa-color-neutral-border-loud);
+
+	--vc-months-years-bg: transparent;
+	--vc-months-years-bg-hover: var(--wa-color-neutral-fill-quiet);
+	--vc-months-years-bg-selected: var(--wa-color-brand-fill-loud);
+	--vc-months-years-color: var(--wa-color-text-quiet);
+	--vc-months-years-color-disabled: var(--wa-color-neutral-border-loud);
+	--vc-months-years-color-selected: var(--wa-color-brand-on-loud);
+
+	--vc-week-day-color: var(--wa-color-text-quiet);
+	--vc-week-day-color-hover: var(--wa-color-text-normal);
+	--vc-week-day-off-color: var(--wa-color-danger);
+	--vc-week-day-off-color-hover: var(--wa-color-danger);
+	--vc-week-numbers-title-color: var(--wa-color-text-quiet);
+	--vc-week-number-color: var(--wa-color-text-quiet);
+	--vc-week-number-color-hover: var(--wa-color-text-normal);
+	--vc-collapse-color: var(--wa-color-text-quiet);
+
+	--vc-date-bg: transparent;
+	--vc-date-bg-hover: var(--wa-color-neutral-fill-quiet);
+	--vc-date-color: var(--wa-color-text-normal);
+	--vc-date-disabled-color: var(--wa-color-neutral-border-loud);
+	--vc-date-hover-bg: var(--wa-color-neutral-fill-quiet);
+	--vc-date-hover-edge-bg: var(--wa-color-neutral-fill-normal);
+	--vc-date-outside-color: var(--wa-color-text-quiet);
+	--vc-date-today-bg: var(--wa-color-neutral-fill-quiet);
+	--vc-date-today-color: var(--wa-color-brand);
+	--vc-date-today-outside-color: var(--wa-color-text-quiet);
+	--vc-date-selected-bg: var(--wa-color-brand-fill-loud);
+	--vc-date-selected-color: var(--wa-color-brand-on-loud);
+	--vc-date-selected-outside-bg: var(--wa-color-brand-fill-quiet);
+	--vc-date-selected-outside-color: var(--wa-color-brand-on-quiet);
+	--vc-date-range-middle-bg: var(--wa-color-brand-fill-normal);
+	--vc-date-range-middle-color: var(--wa-color-brand-on-normal);
+	--vc-date-range-middle-outside-bg: var(--wa-color-neutral-fill-quiet);
+	--vc-date-range-middle-outside-color: var(--wa-color-text-quiet);
+	--vc-date-range-middle-weekend-bg: var(--wa-color-danger-fill-normal);
+	--vc-date-range-middle-weekend-color: var(--wa-color-danger-on-normal);
+	--vc-date-weekend-color: var(--wa-color-danger);
+	--vc-date-weekend-bg-hover: var(--wa-color-danger-fill-quiet);
+	--vc-date-weekend-hover-bg: var(--wa-color-danger-fill-quiet);
+	--vc-date-weekend-hover-edge-bg: var(--wa-color-danger-fill-normal);
+	--vc-date-weekend-disabled-color: var(--wa-color-neutral-border-loud);
+	--vc-date-weekend-disabled-outside-color: var(--wa-color-neutral-border-loud);
+	--vc-date-weekend-today-color: var(--wa-color-danger);
+	--vc-date-weekend-today-disabled-color: var(--wa-color-neutral-border-loud);
+	--vc-date-weekend-today-outside-color: var(--wa-color-text-quiet);
+	--vc-date-weekend-outside-bg: transparent;
+	--vc-date-weekend-outside-bg-hover: var(--wa-color-neutral-fill-quiet);
+	--vc-date-weekend-outside-color: var(--wa-color-text-quiet);
+	--vc-date-weekend-outside-hover-bg: var(--wa-color-neutral-fill-quiet);
+	--vc-date-weekend-selected-bg: var(--wa-color-danger-fill-loud);
+	--vc-date-weekend-selected-color: var(--wa-color-danger-on-loud);
+	--vc-date-popup-bg: var(--wa-color-surface-raised);
+	--vc-date-popup-color: var(--wa-color-text-normal);
+	--vc-date-range-tooltip-bg: var(--wa-color-neutral-fill-loud);
+	--vc-date-range-tooltip-color: var(--wa-color-neutral-on-loud);
+
+	--vc-time-border-color: var(--wa-color-surface-border);
+	--vc-time-separator-color: var(--wa-color-text-normal);
+	--vc-time-input-bg: var(--wa-color-surface-default);
+	--vc-time-input-bg-hover: var(--wa-color-neutral-fill-quiet);
+	--vc-time-input-color: var(--wa-color-text-normal);
+	--vc-time-keeping-color: var(--wa-color-text-quiet);
+	--vc-time-range-bg: var(--wa-color-surface-default);
+	--vc-time-range-thumb-bg: var(--wa-color-surface-raised);
+	--vc-time-range-thumb-border: var(--wa-color-surface-border);
+	--vc-time-range-thumb-border-hover: var(--wa-color-neutral-border-loud);
+	--vc-time-range-track-color: var(--wa-color-neutral-border-normal);
 }
 
 [data-vc-date-btn] {
-  border-radius: var(--wa-border-radius-s);
+	border-radius: var(--wa-border-radius-s);
 }
 
-[data-vc-theme='light'] {
-  .vc-date__btn {
-    color: var(--wa-color-text-normal);
+[data-vc-theme='light'] .vc-date__popup,
+[data-vc-theme='light'] .vc-date-range-tooltip {
+	--tw-shadow: var(--wa-shadow-m);
+	border: 1px solid var(--wa-color-surface-border);
+}
 
-    &:hover {
-      background-color: var(--wa-color-neutral-fill-normal);
-    }
-  }
-
-  .vc-date[data-vc-date-today] {
-    .vc-date__btn {
-      background-color: var(--wa-color-neutral-fill-normal);
-    }
-  }
-
-  .vc-week__day {
-    color: var(--wa-color-text-quiet);
-  }
-
-  .vc-date[data-vc-date-selected] {
-    .vc-date__btn {
-      background-color: var(--wa-color-brand-fill-loud);
-      color: var(--wa-color-brand-on-loud);
-    }
-  }
-
-  .vc-week__day[data-vc-week-day-off],
-  .vc-date[data-vc-date-holiday] .vc-date__btn,
-  .vc-date[data-vc-date-weekend] .vc-date__btn,
-  .vc-date[data-vc-date-holiday][data-vc-date-today] .vc-date__btn,
-  .vc-date[data-vc-date-weekend][data-vc-date-today] .vc-date__btn {
-    color: var(--wa-color-danger-on-quiet);
-  }
+/* The chevrons are inline SVGs painted #0f172a. A mask lets them follow the text color. */
+[data-vc-theme='light'] .vc-arrow::before,
+[data-vc-theme='light'] .vc-collapse::before {
+	background-color: var(--wa-color-text-normal);
+	background-image: none;
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E");
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: 1.25rem;
 }
