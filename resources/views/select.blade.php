@@ -2,8 +2,18 @@
 	'label' => '',
 ])
 
+@php
+	$classes = [];
+
+	if (!$label) {
+		$attributes = $attributes->merge([
+			'class' => 'no-label-text'
+		]);
+	}
+@endphp
+
 <div class="form-element">
-	<wa-select label="{{ $label }}" {{$attributes->merge(['class' => $label ? 'has-label' : ''])}}>
+	<wa-select label="{{ $label }}" {{$attributes}}>
 		@if($startIcon)
 			<span slot="start">
 				<x-ui-icon name="{{$startIcon}}" />
@@ -43,3 +53,4 @@
 		@endforeach
 	</wa-select>
 </div>
+
