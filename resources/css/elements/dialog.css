@@ -1,2 +1,5 @@
 wa-dialog {
+	&::part(footer) {
+		padding-top: var(--wa-space-m);
+	}
 }
