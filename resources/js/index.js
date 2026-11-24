@@ -6,6 +6,7 @@ import { registerIconLibrary } from '@awesome.me/webawesome/dist/webawesome.js';
 import { patchWebAwesomeForAlpine } from './lib/webawesome-alpine.js';
 
 import '@awesome.me/webawesome/dist/components/button/button.js';
+import '@awesome.me/webawesome/dist/components/button-group/button-group.js';
 import '@awesome.me/webawesome/dist/components/icon/icon.js';
 import '@awesome.me/webawesome/dist/components/input/input.js';
 import '@awesome.me/webawesome/dist/components/drawer/drawer.js';
