@@ -9,6 +9,28 @@
 	margin-top: var(--wa-space-2xs);
 }
 
+/*
+ * Dialogs and drawers clip absolute children. A popover lifts the same results
+ * box into the top layer; anchors keep it under the field.
+ */
+@supports (width: anchor-size(width)) {
+	.autocomplete__results:popover-open {
+		position: fixed;
+		inset: auto;
+		z-index: 1000;
+		width: anchor-size(width);
+		margin: var(--wa-space-2xs) 0 0;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		overflow: visible;
+		top: anchor(bottom);
+		left: anchor(left);
+		position-visibility: anchors-visible;
+		position-try-fallbacks: flip-block;
+	}
+}
+
 .autocomplete__list {
 	max-height: 16rem;
 	overflow-y: auto;

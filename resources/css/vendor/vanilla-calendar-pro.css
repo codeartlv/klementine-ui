@@ -92,6 +92,11 @@
 	border-radius: var(--wa-border-radius-s);
 }
 
+/* Above custom dialogs and drawers, which stay in page stacking. */
+[data-vc='calendar'][data-vc-input] {
+	z-index: 1000;
+}
+
 [data-vc-theme='light'] .vc-date__popup,
 [data-vc-theme='light'] .vc-date-range-tooltip {
 	--tw-shadow: var(--wa-shadow-m);

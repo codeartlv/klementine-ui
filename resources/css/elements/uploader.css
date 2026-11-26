@@ -9,6 +9,7 @@
 		border: dashed 1px var(--wa-form-control-border-color);
 		border-radius: var(--wa-form-control-border-radius);
 		padding: var(--wa-space-m);
+		padding-bottom: var(--wa-space-l);
 
 		.uploader__trigger-text {
 			font-weight: var(--wa-font-weight-bold);

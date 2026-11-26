@@ -1,5 +1,11 @@
 import autoComplete from '@tarekraafat/autocomplete.js/dist/autoComplete.js';
 
+// The results sit inside the field, so a scrolling dialog clips them.
+// A popover lifts that same box into the top layer, and anchors keep it
+// attached to the field.
+const anchored = typeof CSS !== 'undefined' && CSS.supports('width: anchor-size(width)');
+let anchorSerial = 0;
+
 export default (source = '', minLength = 1, noResults = '', lookup = false, selected = '') => ({
 	engine: null,
 	lookup: Boolean(lookup),
@@ -29,6 +35,15 @@ export default (source = '', minLength = 1, noResults = '', lookup = false, sele
 
 		if (this.lookup && this.selectedId !== '') {
 			input.readOnly = true;
+		}
+
+		if (anchored) {
+			this.anchorName = `--autocomplete-${++anchorSerial}`;
+			this.$root.querySelector('.autocomplete__field')?.style.setProperty('anchor-name', this.anchorName);
+			this.onResultsOpen = () => this.presentResults();
+			this.onResultsClose = () => this.dismissResults();
+			input.addEventListener('open', this.onResultsOpen);
+			input.addEventListener('close', this.onResultsClose);
 		}
 
 		this.engine = new autoComplete({
@@ -229,7 +244,38 @@ export default (source = '', minLength = 1, noResults = '', lookup = false, sele
 		}
 	},
 
+	presentResults() {
+		const results = this.$refs.results;
+
+		if (!(results instanceof HTMLElement)) {
+			return;
+		}
+
+		results.style.setProperty('position-anchor', this.anchorName);
+		results.popover = 'manual';
+
+		if (!results.matches(':popover-open')) {
+			results.showPopover();
+		}
+	},
+
+	dismissResults() {
+		const results = this.$refs.results;
+
+		if (results instanceof HTMLElement && results.matches(':popover-open')) {
+			results.hidePopover();
+		}
+	},
+
 	destroy() {
+		const input = this.$refs.field?.shadowRoot?.querySelector('input');
+
+		if (input instanceof HTMLInputElement) {
+			input.removeEventListener('open', this.onResultsOpen);
+			input.removeEventListener('close', this.onResultsClose);
+		}
+
+		this.dismissResults();
 		this.engine?.unInit?.();
 		this.engine = null;
 	},
